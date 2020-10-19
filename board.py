@@ -1,3 +1,5 @@
+from player import Player
+
 class Board:
     def __init__(self) -> None:
         self.board=[['','',''], # X ---->
@@ -6,13 +8,25 @@ class Board:
         self.turns=0
 
     def newgame(self) -> None:
-        __init__(self)
+        self.__init__()
+        print(">>> STARTED NEW GAME <<<")
+
+        n1 = str(input("Enter name of player 1 "))
+        n2 = str(input("Enter name of player 2 "))
+
+        self.p1 = Player(name=n1,piece='X')
+        self.p2 = Player(name=n2,piece='O')
 
     def print_board(self) -> None:
+        print("0,0 | 1,0 | 1,2")
+        print("0,1 | 1,1 | 2,1")
+        print("0,2 | 1,2 | 2,2")
+        print()
         for y in range(3):
             for x in range(3):
                 print('-' if self.board[y][x] == '' else self.board[y][x],end="")
             print()
+        print()
 
     def is_empty(self,x:int,y:int) -> bool:
         return self.board[y][x]==''
